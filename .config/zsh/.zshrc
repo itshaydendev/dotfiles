@@ -1,22 +1,38 @@
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 export ZSH="$XDG_DATA_HOME/oh-my-zsh"
 
-ZSH_THEME="zeit"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 plugins=(
-  git
+  asdf
+  archlinux
+  composer
   docker
   docker-compose
+  extract
+  fzf
+  git
+  gnu-utils
+  laravel
+  last-working-dir
   node
   npm
+  npx
   sudo
   systemd
-  vscode
-  web-search
-  yarn
+  zsh-syntax-highlighting
+  zsh-z
 )
 
 source $ZSH/oh-my-zsh.sh
-[[ -s "$XDG_CONFIG_HOME/profile" ]] && source "$XDG_CONFIG_HOME/profile"
-[[ -s "$XDG_DATA_HOME/asdf/asdf.sh" ]] && . $XDG_DATA_HOME/asdf/asdf.sh
-[[ -s "$XDG_DATA_HOME/asdf/asdf.sh" ]] && fpath=(${ASDF_DIR}/completions $fpath)
+
+[[ -s "$XDG_DATA_HOME/asdf" ]] && . $XDG_DATA_HOME/asdf/asdf.sh
+fpath=(${ASDF_DIR}/completions $fpath)
 autoload -Uz compinit && compinit
+
+source $XDG_DATA_HOME/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+[[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
