@@ -51,10 +51,9 @@ call plug#end()
 colorscheme onehalfdark
 let g:lightline = {}
 let g:lightline.colorscheme='onehalfdark'
-let g:lightline.active = {
-                        \  'left': [ [ 'mode' ], [ 'readonly', 'filename' ] ],
-                        \  'right': [ [ 'gitbranch' ] ]
-                        \}
+let g:lightline.active = { 'left': [ [ 'mode' ] ], 'right': [ [ 'readonly', 'filename' ], [], [ 'gitbranch' ] ] }
+let g:lightline.component_function = {}
+let g:lightline.component_function.gitbranch = 'FugitiveHead'
 
 " If I have Ripgrep installed, derive the root? This isn't my line.
 if executable('rg')
