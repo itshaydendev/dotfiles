@@ -25,6 +25,9 @@ export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 # Configure ASDF to use XDG
 export ASDF_DATA_DIR="$XDG_DATA_HOME/asdf"
 
+# Use Neovim as my editor
+export EDITOR="/usr/bin/nvim"
+
 ###########################
 # Aliases
 ###########################
@@ -32,7 +35,9 @@ export ASDF_DATA_DIR="$XDG_DATA_HOME/asdf"
 # Dotfiles management
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME"
 
+# Clear with history
+alias clearh="clear && printf '\033[3J'"
+
 # vi/vim to Neovim
 alias vim="nvim"
 alias vi="nvim"
-

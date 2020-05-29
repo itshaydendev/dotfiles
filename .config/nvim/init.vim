@@ -29,6 +29,7 @@ highlight ColorColumn ctermbg=0 guibg=lightgrey
 
 " vim-plug for plugin installations
 call plug#begin('~/.local/share/nvim/plugged')
+
 Plug 'ntk148v/vim-horizon'
 Plug 'tpope/vim-fugitive'
 Plug 'leafgarland/typescript-vim'
@@ -43,6 +44,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'SidOfc/mkdx'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'sonph/onehalf', { 'rtp': 'vim/' }
+
 call plug#end()
 
 " Theming, because Vim's default theme makes me regurgitate my noonly meal
@@ -67,6 +69,9 @@ let g:mkdx#settings = { 'highlight': { 'enable': 1 },
                       \ 'links': { 'external': { 'enable': 1 } },
                       \ 'toc': { 'text': 'Table of Contents', 'update_on_write': 1 },
                       \ 'fold': { 'enable': 1 } }
+
+" Setting up relative line numbers
+set relativenumber
 
 " Window movements
 nnoremap <leader>h :wincmd h<CR>
