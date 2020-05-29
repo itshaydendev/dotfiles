@@ -1,0 +1,5 @@
+configuration {
+	modi: "window,run,ssh,drun";
+  theme: "./themes/slate";
+  lines: 4;
+}

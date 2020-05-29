@@ -1,0 +1,11 @@
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+[user]
+	name = Hayden Young
+	email = hayden@itshayden.dev
+	signingkey = 7D734116639A90B3
+[commit]
+	gpgsign = true

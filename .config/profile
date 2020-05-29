@@ -1,0 +1,38 @@
+###########################
+# Environment Variables
+###########################
+
+# PATH extensions
+export PATH="$PATH:$HOME/.local/bin"
+
+# Deno install directory
+export DENO_INSTALL="/home/hayden/.deno"
+export PATH="$DENO_INSTALL/bin:$PATH"
+
+# GPG Env vars
+export GNUPGHOME="$XDG_DATA_HOME/gnupg"
+export GPG_TTY=$(tty)
+
+# For JVM
+export JAVA_HOME="/lib/jvm/java-11-openjdk"
+
+# Set terminal features to be the same as Xterm
+export TERM=xterm
+
+# Set NPM to read from XDG_DATA_HOME
+export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
+
+# Configure ASDF to use XDG
+export ASDF_DATA_DIR="$XDG_DATA_HOME/asdf"
+
+###########################
+# Aliases
+###########################
+
+# Dotfiles management
+alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME"
+
+# vi/vim to Neovim
+alias vim="nvim"
+alias vi="nvim"
+
