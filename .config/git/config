@@ -6,6 +6,3 @@
 [user]
 	name = Hayden Young
 	email = hayden@itshayden.dev
-	signingkey = 7D734116639A90B3
-[commit]
-	gpgsign = true
