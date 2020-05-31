@@ -23,7 +23,7 @@ padding-right = 0
 module-margin-left = 0
 module-margin-right = 3
 
-font-0 = JetBrains Mono Nerd Font:style=regular:antialias=true:pixelsize=12;2
+font-0 = monospace:style=regular:antialias=true:pixelsize=12;2
 
 modules-left = bspwm
 modules-center = time
