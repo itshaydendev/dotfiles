@@ -16,6 +16,7 @@ plugins=(
   fzf
   git
   gnu-utils
+  gpg-agent
   laravel
   last-working-dir
   node
@@ -33,7 +34,7 @@ source $ZSH/oh-my-zsh.sh
 fpath=(${ASDF_DIR}/completions $fpath)
 autoload -Uz compinit && compinit
 
-eval $(gpg-agent --daemon)
 source $XDG_DATA_HOME/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $XDG_CONFIG_HOME/profile
 
 [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
