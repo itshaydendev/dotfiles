@@ -1,0 +1,2 @@
+#!/bin/sh
+feh --no-fehbg --bg-fill "$XDG_DATA_HOME/wallpapers/Wallpaper 22.jpg"
