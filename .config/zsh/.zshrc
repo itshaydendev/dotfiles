@@ -7,7 +7,6 @@ export ZSH="$XDG_DATA_HOME/oh-my-zsh"
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
 plugins=(
-  asdf
   archlinux
   composer
   docker
@@ -30,10 +29,10 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
+source $XDG_CONFIG_HOME/profile
+
 [[ -s "$XDG_DATA_HOME/asdf" ]] && . $XDG_DATA_HOME/asdf/asdf.sh
 fpath=(${ASDF_DIR}/completions $fpath)
 autoload -Uz compinit && compinit
-
-source $XDG_CONFIG_HOME/profile
 
 [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
