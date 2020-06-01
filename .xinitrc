@@ -7,5 +7,5 @@ nm-applet &
 [[ -f $XDG_CONFIG_HOME/laptop ]] && { cbatticon & }
 dunst &
 [[! -f $XDG_CONFIG_HOME/laptop ]] && $XDG_CONFIG_HOME/xrandr/main.sh
-/usr/lib/kdeconnectd &
+[[ -f /usr/lib/kdeconnectd ]] && /usr/lib/kdeconnectd &
 exec bspwm
