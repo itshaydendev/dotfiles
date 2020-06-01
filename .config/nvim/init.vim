@@ -49,6 +49,8 @@ call plug#end()
 
 " Theming, because Vim's default theme makes me regurgitate my noonly meal
 colorscheme onedark
+hi Normal guibg=NONE ctermbg=NONE
+
 let g:lightline = {}
 let g:lightline.colorscheme='onedark'
 let g:lightline.active = { 'left': [ [ 'mode' ] ], 'right': [ [ 'readonly', 'filename' ], [], [ 'gitbranch' ] ] }

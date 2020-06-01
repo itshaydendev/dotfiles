@@ -4,7 +4,7 @@
 
 # terminal emulator
 super + Return
-	alacritty
+	kitty
 
 # cli run
 super + ctrl + @space
@@ -24,7 +24,7 @@ super + Escape
 
 # file manager
 super + r
-  alacritty -e ranger
+  kitty ranger
 
 #
 # bspwm hotkeys

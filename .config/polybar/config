@@ -1,7 +1,25 @@
 [colors]
-background = #000000
-background-active = #9112ED
-foreground = #ffffff
+black-light = #383a42
+black-dark = #282c34
+red-light = #e45649
+red-dark = #e06c75
+green-light = #50a14f
+green-dark = #98c379
+yellow-light = #c18401
+yellow-dark = #e5c07b
+blue-light = #0184bc
+blue-dark = #61afef
+magenta-dark = #a626a4
+magenta-light = #c678dd
+cyan-light = #0997b3
+cyan-dark = #56b6c2
+white-light = #fafafa
+white-dark = #dcdfe4
+
+primary = ${colors.magenta-light}
+primary-inverse = ${colors.black-dark}
+background = ${colors.black-dark}
+foreground = ${colors.white-dark}
 
 [bar/top]
 monitor = ${env:MONITOR:}
@@ -21,7 +39,7 @@ padding-left = 0
 padding-right = 0
 
 module-margin-left = 0
-module-margin-right = 3
+module-margin-right = 0
 
 font-0 = monospace:style=regular:antialias=true:pixelsize=12;2
 
@@ -29,26 +47,28 @@ modules-left = bspwm
 modules-center = time
 tray-position = right
 tray-padding = 0
-tray-background = ${colors.background-active}
+tray-background = ${colors.black-light}
 
 [module/bspwm]
 type = internal/bspwm
 
 label-focused = %icon%
-label-focused-background = ${colors.background-active}
+label-focused-background = ${colors.primary}
+label-focused-foreground = ${colors.primary-inverse}
 label-focused-padding = 2
 
 label-occupied = %icon%
-label-occupied-background = #212121
+label-occupied-background = ${colors.background}
+label-occupied-foreground = ${colors.foreground}
 label-occupied-padding = 2
 
 label-urgent = %icon%!
-label-urgent-background = #212121
-label-urgent-foreground = ${colors.background}
+label-urgent-background = ${colors.background}
+label-urgent-foreground = ${colors.primary}
 label-urgent-padding = 2
 
 label-empty = %icon%
-label-empty-background = #212121
+label-empty-background = ${colors.background}
 label-empty-foreground = ${colors.foreground}
 label-empty-padding = 2
 pin-workspaces = true
@@ -62,54 +82,10 @@ ws-icon-5 = msc;
 
 label-monitor = ""
 
-[module/mpd]
-type = internal/mpd
-format-online = <icon-prev>  <label-song>  <icon-next>
-
-icon-prev = «
-icon-next = »
-
-label-song-maxlen = 30
-label-song-ellipsis = true
-
-[module/xbacklight]
-type = internal/xbacklight
-
-format = <label> <bar>
-label = BL
-
-bar-width = 10
-bar-indicator = |
-bar-indicator-foreground = #fff
-bar-indicator-font = 2
-bar-fill = ─
-bar-fill-font = 2
-bar-fill-foreground = #9f78e1
-bar-empty = ─
-bar-empty-font = 2
-bar-empty-foreground = ${colors.foreground-alt}
-
-[module/date]
-type = internal/date
-date = %A, %e %B %Y
-label = %date%
-
 [module/time]
 type = internal/date
 time = %H:%M
 label = %time%
-
-[module/battery]
-type = internal/battery
-battery = BAT0
-adapter = AC
-full-at = 99
-
-label-charging = %percentage%%
-label-discharging = %percentage%%
-format-charging = <label-charging>
-format-discharging = <label-discharging>
-format-full = 100
 
 [settings]
 screenchange-reload = true
