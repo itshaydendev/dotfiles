@@ -6,3 +6,5 @@
 [user]
 	name = Hayden Young
 	email = hayden@itshayden.dev
+[core]
+	autocrlf = input
