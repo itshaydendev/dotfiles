@@ -93,8 +93,10 @@ super + {o,i}
 	bspc wm -h on
 
 # focus or send to the given desktop
-super + {_,shift + }{1-9,0}
-	bspc {desktop -f,node -d} '^{1-9,10}'
+super + {_,shift + }{1-7}
+  bspc {desktop -f,node -d} '^{4-9,10}'
+super + {_,shift + }{8-9,0}
+	bspc {desktop -f,node -d} '^{1-2,3}'
 
 #
 # preselect
@@ -142,10 +144,10 @@ XF86MonBrightness{Down,Up}
 	xbacklight -{dec,inc} 10
 
 XF86Audio{Lower,Raise}Volume
-	pactl set-sink-volume 0 {-,+}10%
+	pactl set-sink-volume @DEFAULT_SINK@ {-,+}10%
 
 XF86AudioMute
-	pactl set-sink-mute 0 toggle
+	pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 XF86Audio{Next,Prev,Play}
-	mpc {next,prev,toggle}
+	dbus-send --type=method_call --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.{Next,Previous,PlayPause}

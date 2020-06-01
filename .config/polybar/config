@@ -73,12 +73,16 @@ label-empty-foreground = ${colors.foreground}
 label-empty-padding = 2
 pin-workspaces = true
 
-ws-icon-0 = www;爵
-ws-icon-1 = dev;
-ws-icon-2 = sys;
-ws-icon-3 = cht;
-ws-icon-4 = mus;
-ws-icon-5 = msc;
+ws-icon-0 = ww1;爵
+ws-icon-1 = ww2;爵
+ws-icon-2 = dv1;
+ws-icon-3 = dv2;
+ws-icon-4 = dv3;
+ws-icon-5 = sys;
+ws-icon-6 = ct1;
+ws-icon-7 = ct2;
+ws-icon-8 = mus;
+ws-icon-9 = msc;
 
 label-monitor = ""
 

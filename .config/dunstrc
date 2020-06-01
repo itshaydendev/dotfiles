@@ -1,16 +1,16 @@
 [global]
     monitor = 0
     follow = mouse
-    geometry = "400x5-12+44"
+    geometry = "400x5-18+50"
     indicate_hidden = yes
     shrink = no
     transparency = 0
     notification_height = 0
     separator_height = 3
-    padding = 12
-    horizontal_padding = 12
+    padding = 18
+    horizontal_padding = 18
     frame_width = 3
-    frame_color = "#9112ed"
+    frame_color = "#61afef"
     separator_color = frame
     sort = yes
     idle_threshold = 999
@@ -35,7 +35,7 @@
     sticky_history = yes
     history_length = 20
     
-    dmenu = /usr/bin/dmenu -p dunst:
+    dmenu = /usr/bin/rofi -dmenu
     browser = /usr/bin/chromium -new-tab
     always_run_script = true
     title = Dunst
@@ -46,33 +46,27 @@
 
     force_xinerama = false
 
-    mouse_left_click = close_current
-    mouse_middle_click = do_action
-    mouse_right_click = close_all
+    mouse_left_click = do_action
+    mouse_middle_click = close_all
+    mouse_right_click = close_current
 
 [experimental]
     per_monitor_dpi = false
 
-[shortcuts]
-    close = ctrl+space
-    close_all = ctrl+shift+space
-    history = ctrl+grave
-    context = ctrl+shift+period
-
 [urgency_low]
-    background = "#222222"
-    foreground = "#888888"
+    background = "#282c34"
+    foreground = "#dcdfe4"
     timeout = 10
 
 [urgency_normal]
-    background = "#000000"
-    foreground = "#eeeeee"
+    background = "#282c34"
+    foreground = "#fafafa"
     timeout = 10
 
 [urgency_critical]
-    background = "#900000"
-    foreground = "#ffffff"
-    frame_color = "#ff0000"
+    background = "#383a42"
+    foreground = "#fafafa"
+    frame_color = "#e45649"
     timeout = 0
 
 # vim: ft=cfg
