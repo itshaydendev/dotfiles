@@ -43,14 +43,14 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'SidOfc/mkdx'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'sonph/onehalf', { 'rtp': 'vim/' }
+Plug 'joshdick/onedark.vim'
 
 call plug#end()
 
 " Theming, because Vim's default theme makes me regurgitate my noonly meal
-colorscheme onehalfdark
+colorscheme onedark
 let g:lightline = {}
-let g:lightline.colorscheme='onehalfdark'
+let g:lightline.colorscheme='onedark'
 let g:lightline.active = { 'left': [ [ 'mode' ] ], 'right': [ [ 'readonly', 'filename' ], [], [ 'gitbranch' ] ] }
 let g:lightline.component_function = {}
 let g:lightline.component_function.gitbranch = 'FugitiveHead'
