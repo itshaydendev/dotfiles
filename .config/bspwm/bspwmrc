@@ -7,10 +7,10 @@ sxhkd &
 
 # Monitor Config
 if test -f $XDG_CONFIG_HOME/laptop; then
-  bspc monitor -d www dev sys cht mus msc
+  bspc monitor -d ww1 ww2 dv1 dv2 dv3 sys ct1 ct2 mus msc
 else
-  bspc monitor DisplayPort-0 -d ww1 ww2 dv1 dv2 dv3 sys ct1
-  bspc monitor HDMI-A-0 -d ct2 mus msc
+  bspc monitor DisplayPort-0 -d dv1 dv2 dv3 sys ct1
+  bspc monitor HDMI-A-0 -d ww1 ww2 ct2 mus msc
 fi
 
 # Border Config
@@ -35,10 +35,18 @@ bspc config presel_feedback_color  '#e5c07b'
 
 # Don't tile
 bspc rule -a feh state=floating
-
-# Tile
-bspc rule -a emacs state=tiling
+bspc rule -a Pavucontrol state=floating
+bspc rule -a Chromium:crx_baipgmmeifmofkcilhccccoipmjccehn state=floating
+bspc rule -a 'Microsoft Teams - Preview' state=floating
 
 # Defaults
-bspc rule -a Discord desktop=^4
+bspc rule -a Chromium desktop=ww1
+bspc rule -a discord desktop=ct1
+bspc rule -a 'Microsoft Teams - Preview' desktop=ct2
+bspc rule -a Chromium:crx_baipgmmeifmofkcilhccccoipmjccehn desktop=ct2
+bspc rule -a jetbrains-datagrip desktop=dv3
+bspc rule -a ktranger desktop=msc
+
+# Polybar
+pb &
 
