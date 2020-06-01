@@ -14,7 +14,7 @@ wm-restack = bspwm
 background = ${colors.background}
 foreground = ${colors.foreground}
 
-line-size = 0
+line-size = 2
 line-color = #f00
 
 padding-left = 0
@@ -34,24 +34,33 @@ tray-background = ${colors.background-active}
 [module/bspwm]
 type = internal/bspwm
 
-label-focused = %name%
+label-focused = %icon%
 label-focused-background = ${colors.background-active}
-label-focused-padding = 1
+label-focused-padding = 2
 
-label-occupied = %name%
-label-occupied-padding = 1
+label-occupied = %icon%
+label-occupied-background = #212121
+label-occupied-padding = 2
 
-label-urgent = %name%!
-label-urgent-background = ${colors.foreground}
+label-urgent = %icon%!
+label-urgent-background = #212121
 label-urgent-foreground = ${colors.background}
-label-urgent-padding = 1
+label-urgent-padding = 2
 
-label-empty = %name%
+label-empty = %icon%
+label-empty-background = #212121
 label-empty-foreground = ${colors.foreground}
-label-empty-padding = 1
-pin-workspaces = false
+label-empty-padding = 2
+pin-workspaces = true
 
-ws-icon-0 = web
+ws-icon-0 = www;爵
+ws-icon-1 = dev;
+ws-icon-2 = sys;
+ws-icon-3 = cht;
+ws-icon-4 = mus;
+ws-icon-5 = msc;
+
+label-monitor = ""
 
 [module/mpd]
 type = internal/mpd
