@@ -24,7 +24,7 @@ super + Escape
 
 # file manager
 super + r
-  kitty ranger
+  kitty --class ktranger ranger
 
 #
 # bspwm hotkeys
@@ -93,10 +93,26 @@ super + {o,i}
 	bspc wm -h on
 
 # focus or send to the given desktop
-super + {_,shift + }{1-7}
-  bspc {desktop -f,node -d} '^{4-9,10}'
-super + {_,shift + }{8-9,0}
-	bspc {desktop -f,node -d} '^{1-2,3}'
+super + {_,shift + }1
+  bspc {desktop -f,node -d} 'dv1'
+super + {_,shift + }2
+  bspc {desktop -f,node -d} 'dv2'
+super + {_,shift + }3
+  bspc {desktop -f,node -d} 'dv3'
+super + {_,shift + }4
+  bspc {desktop -f,node -d} 'sys'
+super + {_,shift + }5
+  bspc {desktop -f,node -d} 'ct1'
+super + {_,shift + }6
+  bspc {desktop -f,node -d} 'ww1'
+super + {_,shift + }7
+  bspc {desktop -f,node -d} 'ww2'
+super + {_,shift + }8
+  bspc {desktop -f,node -d} 'ct2'
+super + {_,shift + }9
+  bspc {desktop -f,node -d} 'mus'
+super + {_,shift + }1
+  bspc {desktop -f,node -d} 'msc'
 
 #
 # preselect
