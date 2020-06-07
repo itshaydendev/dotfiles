@@ -73,7 +73,7 @@ bottom = true
 
 modules-left = ewmh
 modules-center = title-short
-modules-right = weather date
+modules-right = date
 
 [bar/bottom]
 inherit = bar/base
@@ -97,7 +97,7 @@ bottom = false
 
 modules-left = volume
 modules-center = filesystem
-modules-right = wifi cpu memory
+modules-right = wlp2s0 cpu memory
 
 ################################################################################
 
@@ -113,18 +113,21 @@ label-maxlen = 70
 
 [module/ewmh]
 type = internal/xworkspaces
-pin-workspaces = true
 enable-click = true
 enable-scroll = true
 reverse-scroll = true
 
+icon-0 = 0_1:work;code
+icon-1 = 1_1:work;code
+icon-default = misc
+
 format = <label-state>
 
 label-active-padding = 1
-label-active = %{F#9c71C7}[%{F-}%name%%{F#9c71C7}]%{F-}
+label-active = %{F#9c71C7}[%{F-}%icon%%{F#9c71C7}]%{F-}
 
 label-empty-padding = 1
-label-empty = %name%
+label-empty = %icon%
 label-empty-foreground = #838383
 
 ################################################################################
@@ -182,12 +185,19 @@ label-connected = %{A1:sh ~/.config/polybar/local_and_public_ips.sh:} %{F#9c71C7
 
 ################################################################################
 
-[module/wlp6s0]
+[module/wifi]
 type = internal/network
-interface = wlp6s0
 interval = 1.0
 label-connected = %essid% %{A1:sh ~/.config/polybar/local_and_public_ips.sh:} %{F#9c71C7}%{F-}%downspeed:8%   %{F#9c71C7}%{F-}%upspeed:8%%{A}
 format-connected = <label-connected>
+
+[module/wlp2s0]
+inherit = module/wifi
+interface = wlp2s0
+
+[module/wlp6s0]
+inherit = module/wifi
+interface = wlp6s0
 
 ################################################################################
 
