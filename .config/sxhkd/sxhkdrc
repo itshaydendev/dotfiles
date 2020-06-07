@@ -111,7 +111,7 @@ super + {_,shift + }8
   bspc {desktop -f,node -d} 'ct2'
 super + {_,shift + }9
   bspc {desktop -f,node -d} 'mus'
-super + {_,shift + }1
+super + {_,shift + }0
   bspc {desktop -f,node -d} 'msc'
 
 #

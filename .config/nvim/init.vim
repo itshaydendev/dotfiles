@@ -21,6 +21,16 @@ set incsearch
 set nocompatible
 set termguicolors
 filetype plugin on
+set hidden
+set cmdheight=2
+set updatetime=300
+set shortmess+=c
+
+if has('patch-8.1.1564')
+  set signcolumn=number
+else
+  set signcolumn=yes
+endif
 
 " Create a highlighted column at 80 characters to know when to wrap your text
 " lines
@@ -30,7 +40,6 @@ highlight ColorColumn ctermbg=0 guibg=lightgrey
 " vim-plug for plugin installations
 call plug#begin('~/.local/share/nvim/plugged')
 
-Plug 'ntk148v/vim-horizon'
 Plug 'tpope/vim-fugitive'
 Plug 'leafgarland/typescript-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -43,17 +52,19 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'SidOfc/mkdx'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'joshdick/onedark.vim'
+Plug 'dracula/vim', { 'as': 'dracula' }
 
 call plug#end()
 
 " Theming, because Vim's default theme makes me regurgitate my noonly meal
-colorscheme onedark
+colorscheme dracula
 hi Normal guibg=NONE ctermbg=NONE
 
 let g:lightline = {}
-let g:lightline.colorscheme='onedark'
-let g:lightline.active = { 'left': [ [ 'mode' ] ], 'right': [ [ 'readonly', 'filename' ], [], [ 'gitbranch' ] ] }
+let g:lightline.colorscheme='dracula'
+let g:lightline.active = {}
+let g:lightline.active.left = [ [ 'mode' ], [], [ 'cocstatus' ] ]
+let g:lightline.active.right = [ [ 'readonly', 'filename' ], [], [ 'gitbranch' ] ]
 let g:lightline.component_function = {}
 let g:lightline.component_function.gitbranch = 'FugitiveHead'
 
@@ -93,9 +104,70 @@ nnoremap <leader>q :q<CR>
 nnoremap <silent> <Leader>+ :vertical resize +5<CR>
 nnoremap <silent> <Leader>- :vertical resize -5<CR>
 
-" YouCompleteMe shortcuts
+" ==================
+" CoC.nvim shortcuts
+" ==================
+nnoremap <silent> gy <Plug>(coc-type-definition)
 nnoremap <silent> gd <Plug>(coc-definition)
+nnoremap <silent> gi <Plug>(coc-implementation)
+nnoremap <silent> gr <Plug>(coc-references)
 nnoremap <silent> <space>a  :<C-u>CocList diagnostics<CR>
+nnoremap <silent> <Leader>d :call <SID>show_documentation()<CR>
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+nnoremap <leader>rn <Plug>(coc-rename)
+
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+
+augroup mygroup
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder.
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
+
+inoremap <silent><expr> <TAB>
+  \ pumvisible() ? "\<C-n>" :
+  \ <SID>check_back_space() ? "\<TAB>" :
+  \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+" Trigger completion with c-space
+inoremap <silent><expr> <c-space> coc#refresh()
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1] =~# '\s'
+endfunction
+
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+
+command! -nargs=0 Format :call CocAction('format')
+command! -nargs=? Fold :call CocAction('fold', <f-args>)
+command! -nargs=0 OR :call CocAction('runCommand', 'editor.action.organizeImport')
+
+if exists('*complete_info')
+  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+else
+  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+endif
+
+" Use `[g` and `]g` to navigate diagnostics
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" ==================
 
 " Move a line up or down a la VSCode
 nnoremap <M-Up> :move -2<CR>
@@ -104,6 +176,7 @@ nnoremap <M-Down> :move +1<CR>
 " Open fzf
 nnoremap <silent> <Leader>f :Files<CR>
 nnoremap <silent> <Leader>s :Rg<CR>
+
 
 " FZF fixes
 command! -bang -nargs=* Rg

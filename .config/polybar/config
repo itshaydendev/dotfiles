@@ -1,99 +1,219 @@
-[colors]
-black-light = #383a42
-black-dark = #282c34
-red-light = #e45649
-red-dark = #e06c75
-green-light = #50a14f
-green-dark = #98c379
-yellow-light = #c18401
-yellow-dark = #e5c07b
-blue-light = #0184bc
-blue-dark = #61afef
-magenta-dark = #a626a4
-magenta-light = #c678dd
-cyan-light = #0997b3
-cyan-dark = #56b6c2
-white-light = #fafafa
-white-dark = #dcdfe4
-
-primary = ${colors.magenta-light}
-primary-inverse = ${colors.black-dark}
-background = ${colors.black-dark}
-foreground = ${colors.white-dark}
-
-[bar/top]
-monitor = ${env:MONITOR:}
-width = 100%
-height = 32
-radius = 0.0
-fixed-center = true
-wm-restack = bspwm
-
-background = ${colors.background}
-foreground = ${colors.foreground}
-
-line-size = 2
-line-color = #f00
-
-padding-left = 0
-padding-right = 0
-
-module-margin-left = 0
-module-margin-right = 0
-
-font-0 = monospace:style=regular:antialias=true:pixelsize=12;2
-
-modules-left = bspwm
-modules-center = time
-tray-position = right
-tray-padding = 0
-tray-background = ${colors.black-light}
-
-[module/bspwm]
-type = internal/bspwm
-
-label-focused = %icon%
-label-focused-background = ${colors.primary}
-label-focused-foreground = ${colors.primary-inverse}
-label-focused-padding = 2
-
-label-occupied = %icon%
-label-occupied-background = ${colors.background}
-label-occupied-foreground = ${colors.foreground}
-label-occupied-padding = 2
-
-label-urgent = %icon%!
-label-urgent-background = ${colors.background}
-label-urgent-foreground = ${colors.primary}
-label-urgent-padding = 2
-
-label-empty = %icon%
-label-empty-background = ${colors.background}
-label-empty-foreground = ${colors.foreground}
-label-empty-padding = 2
-pin-workspaces = true
-
-ws-icon-0 = ww1;爵
-ws-icon-1 = ww2;爵
-ws-icon-2 = dv1;
-ws-icon-3 = dv2;
-ws-icon-4 = dv3;
-ws-icon-5 = sys;
-ws-icon-6 = ct1;
-ws-icon-7 = ct2;
-ws-icon-8 = mus;
-ws-icon-9 = msc;
-
-label-monitor = ""
-
-[module/time]
-type = internal/date
-time = %H:%M
-label = %time%
+[global/wm]
+margin-top = 0
+margin-bottom = 0
 
 [settings]
 screenchange-reload = true
 
-[global/wm]
-margin-top = 0
-margin-bottom = 0
+################################################################################
+
+[colors]
+background = #d0303030
+background-transparent = #00303030
+background-alt = #0f0f0f
+background-alt-2 = #ff5fafcf
+foreground = #BEB3CD
+foreground-alt = #c1c2c3
+red = #fb4934
+green = #b8bb26
+yellow = #fabd2f
+blue = #83a598
+purple = #d3869b
+aqua = #8ec07c
+orange = #fe8019
+white = #dddddd
+blue_arch = #83afe1
+grey = #5b51c9
+grey1 = #5bb1c9
+grey2 = #5bf1c9
+
+################################################################################
+
+[bar/base]
+font-0 = Terminus:size=14;0
+font-1 = Siji:size=14;1
+width = 100%
+height = 24
+offset-x = 0
+offset-y = 0
+fixed-center = true
+monitor = ${env:MONITOR:}
+
+background = ${colors.background-alt}
+foreground = ${colors.foreground}
+
+overline-size = 0
+underline-size = 0
+
+border-bottom-size = 0
+border-bottom-color = #ffffff
+
+module-margin-left = 1
+module-margin-right = 1
+
+radius = 0.0
+
+line-size = 3
+line-color = #f00
+
+border-size = 0
+border-color = #00000000
+
+tray-position = none
+tray-padding = 2
+tray-background = ${root.background}
+padding-left = 1
+padding-right = 1
+
+################################################################################
+
+[bar/laptop-bottom]
+inherit = bar/base
+bottom = true
+
+modules-left = ewmh
+modules-center = title-short
+modules-right = weather date
+
+[bar/bottom]
+inherit = bar/base
+bottom = true
+
+modules-left = ewmh
+modules-center = title
+modules-right = date
+
+[bar/top]
+inherit = bar/base
+bottom = false
+
+modules-left = volume
+modules-center = filesystem
+modules-right = wlp6s0 cpu memory
+
+[bar/laptop-top]
+inherit = bar/base
+bottom = false
+
+modules-left = volume
+modules-center = filesystem
+modules-right = wifi cpu memory
+
+################################################################################
+
+[module/title]
+type = internal/xwindow
+label-maxlen = 170
+
+[module/title-short]
+type = internal/xwindow
+label-maxlen = 70
+
+################################################################################
+
+[module/ewmh]
+type = internal/xworkspaces
+pin-workspaces = true
+enable-click = true
+enable-scroll = true
+reverse-scroll = true
+
+format = <label-state>
+
+label-active-padding = 1
+label-active = %{F#9c71C7}[%{F-}%name%%{F#9c71C7}]%{F-}
+
+label-empty-padding = 1
+label-empty = %name%
+label-empty-foreground = #838383
+
+################################################################################
+
+[module/filesystem]
+type = internal/fs
+interval = 2
+
+mount-0 = /
+mount-1 = /storage
+
+label-mounted = %{F#9c71C7}%mountpoint%%{F-} %free%
+label-unmounted =
+label-unmounted-foreground = ${colors.foreground}
+
+################################################################################
+
+[module/battery]
+type = internal/battery
+# ls -l /sys/class/power_supply
+battery = BAT0
+adapter = AC
+full-at = 98
+
+format-charging = %{F#9c71C7}%{F-} <label-charging>
+format-discharging = %{F#9c71C7}%{F-} <label-discharging>
+
+################################################################################
+
+[module/cpu]
+type = internal/cpu
+interval = 1
+format-prefix = "  %{F#9c71C7}%{F-}"
+format-prefix-foreground = ${colors.foreground}
+format-underline = ${colors.grey}
+label = %percentage:3%%
+
+################################################################################
+
+[module/memory]
+type = internal/memory
+interval = 1
+format-prefix = "%{F#9c71C7}%{F-}"
+format-prefix-foreground = ${colors.foreground}
+format-underline = ${colors.grey}
+label = %percentage_used:3%%
+
+################################################################################
+
+[module/eth]
+type = internal/network
+interface = enp4s0
+interval = 1.0
+label-connected = %{A1:sh ~/.config/polybar/local_and_public_ips.sh:} %{F#9c71C7}%{F-}%downspeed:8%   %{F#9c71C7}%{F-}%upspeed:8%%{A}
+
+################################################################################
+
+[module/wlp6s0]
+type = internal/network
+interface = wlp6s0
+interval = 1.0
+label-connected = %essid% %{A1:sh ~/.config/polybar/local_and_public_ips.sh:} %{F#9c71C7}%{F-}%downspeed:8%   %{F#9c71C7}%{F-}%upspeed:8%%{A}
+format-connected = <label-connected>
+
+################################################################################
+
+[module/date]
+type = internal/date
+interval = 1
+
+date = " %A %B %d"
+time = %H:%M
+
+format-prefix = "%{F#9c71C7}%{F-}"
+format-prefix-foreground = ${colors.foreground}
+format-underline = ${colors.grey}
+
+label = %{F#6B5A68}%date%%{F-}  %time%
+
+################################################################################
+
+[module/volume]
+type = internal/pulseaudio
+interval = 1
+
+label-volume = "%{F#9c71C7} %{F-}%percentage%%"
+label-volume-foreground = ${root.foreground}
+
+format-muted-prefix = "%{F#9c71C7}%{F-} "
+format-muted-foreground = #6B5A68
+
+; vim: set ft=dosini:
