@@ -71,7 +71,7 @@ padding-right = 1
 inherit = bar/base
 bottom = true
 
-modules-left = ewmh
+modules-left = workspaces-xmonad
 modules-center = title-short
 modules-right = date
 
@@ -129,6 +129,12 @@ label-active = %{F#9c71C7}[%{F-}%icon%%{F#9c71C7}]%{F-}
 label-empty-padding = 1
 label-empty = %icon%
 label-empty-foreground = #838383
+
+[module/workspaces-xmonad]
+type = custom/script
+exec = tail -F /tmp/.xmonad-workspace-log
+exec-if = [ -f /tmp/.xmonad-workspace-log ]
+tail = true
 
 ################################################################################
 
