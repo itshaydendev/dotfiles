@@ -113,21 +113,19 @@ label-maxlen = 70
 
 [module/ewmh]
 type = internal/xworkspaces
+pin-workspaces = true
 enable-click = true
 enable-scroll = true
 reverse-scroll = true
 
-icon-0 = 0_1:work;code
-icon-1 = 1_1:work;code
-icon-default = misc
-
 format = <label-state>
 
-label-active-padding = 1
-label-active = %{F#9c71C7}[%{F-}%icon%%{F#9c71C7}]%{F-}
+label-active = %{F#9c71C7}[%{F-}%name%%{F#9c71C7}]%{F-}
 
-label-empty-padding = 1
-label-empty = %icon%
+label-urgent = " %name "
+label-urgent-foreground = #9c71C7
+
+label-empty = " %name% "
 label-empty-foreground = #838383
 
 [module/workspaces-xmonad]

@@ -14,7 +14,7 @@ else
 fi
 
 # Border Config
-bspc config border_width         3
+bspc config border_width         2
 
 # Window Gap & Padding Config
 bspc config top_padding          0

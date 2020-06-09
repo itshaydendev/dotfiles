@@ -23,6 +23,7 @@ plugins=(
   npx
   sudo
   systemd
+  zsh-autosuggestions
   zsh-syntax-highlighting
   zsh-z
 )

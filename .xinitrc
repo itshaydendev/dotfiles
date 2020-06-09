@@ -10,4 +10,4 @@ dunst &
 [[ -f /usr/lib/kdeconnectd ]] && /usr/lib/kdeconnectd &
 eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
 export SSH_AUTH_SOCK
-exec xmonad
+exec bspwm
